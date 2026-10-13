@@ -1,0 +1,11 @@
+== AFTER (HEAD extension) ==
+ok - .omp watch extension: fm_watch_arm_omp arms once, repeats as a no-op, and delivers an actionable close as one follow-up
+ok - .omp watch extension: a superseded handling confirmation (exit 3) delivers a plain wake, a refused one (exit 1) still reports failure
+ok - .omp watch extension: a failed confirmation for a stale successor spares the newer arm
+ok - .omp watch extension: a dead-but-unclosed arm child frees the slot for repair and scheduled retry
+ok - .omp watch extension: an opted-in home runs the supervision host and relays every host line (away record)
+ok - .omp watch extension: an opted-in home runs the supervision host and relays every host line (quiet record)
+ok - .omp watch extension: a home without config/supervision-host or with an off file keeps the plain arm
+ok - .omp watch extension: a host-only boundary rides the replacement handoff and replays in the successor session
+ok - .omp watch extension: a host close split across stream chunks reaches main as one whole follow-up
+exit=0

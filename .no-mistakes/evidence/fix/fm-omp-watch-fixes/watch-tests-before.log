@@ -1,0 +1,32 @@
+== BEFORE (base extension) ==
+ok - .omp watch extension: fm_watch_arm_omp arms once, repeats as a no-op, and delivers an actionable close as one follow-up
+not ok - omp superseded confirmation (exit 3): file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:17
+if (process.env.CONFIRM_RC === "3" && sent[0].includes("FAILED")) throw new Error(`a superseded confirmation was reported as a failure: ${sent[0]}`);
+                                                                        ^
+
+Error: a superseded confirmation was reported as a failure: ⁣FIRSTMATE_OP: v1 watcher: FIRSTMATE WATCHER WAKE: signal: omp-confirm done
+
+watcher: FAILED - handling delivery confirmation was rejected (status=3 generation=gen-1 watcherPid=1470805)
+
+Run bin/fm-wake-drain.sh first and handle the queued wake. Watcher continuity is extension-owned.
+    at file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:17:73
+
+Node.js v26.10.0: expected exit 0, got 1
+== BEFORE newer_arm ==
+not ok - omp failed confirmation must spare a newer arm: file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:27
+if (!repair.content[0].text.includes("started omp extension arm child")) throw new Error(`repair did not start a newer arm: ${repair.content[0].text}`);
+                                                                               ^
+
+Error: repair did not start a newer arm: watcher: unchanged - omp extension already owns an arm child; no manual re-arm needed; call fm_watch_arm_omp again only after a later notification says the cycle is missing, failed, or unhealthy
+    at file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:27:80
+
+Node.js v26.10.0: expected exit 0, got 1
+== BEFORE slot ==
+not ok - omp dead-but-unclosed arm child must not hold the slot: file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:31
+if (!repair.content[0].text.includes("started omp extension arm child")) throw new Error(`repair no-opped on a dead child: ${repair.content[0].text}`);
+                                                                               ^
+
+Error: repair no-opped on a dead child: watcher: unchanged - omp extension already owns an arm child; no manual re-arm needed; call fm_watch_arm_omp again only after a later notification says the cycle is missing, failed, or unhealthy
+    at file:///sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M4SV68CHPFKE7HDA39178E4T/[eval1]:31:80
+
+Node.js v26.10.0: expected exit 0, got 1
