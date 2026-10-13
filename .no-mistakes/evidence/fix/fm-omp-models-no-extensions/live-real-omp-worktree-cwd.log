@@ -1,0 +1,7 @@
+=== (cwd=worktree, FM_HOME=lab) omp models --json 
+exit=0
+.omp-turnend-extension-loaded
+.omp-watch-extension-loaded
+=== (cwd=worktree, FM_HOME=lab) omp models --json --no-extensions
+exit=0
+(no markers)

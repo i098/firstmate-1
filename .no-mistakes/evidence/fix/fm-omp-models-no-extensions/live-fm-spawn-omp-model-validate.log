@@ -1,0 +1,14 @@
+=== base omp_model_validate openai-codex/gpt-5.6-luna (cwd=worktree, FM_HOME=lab, wrapper pid owns lock)
+validate rc=0
+markers: .omp-turnend-extension-loaded .omp-watch-extension-loaded 
+=== base omp_model_validate openai-codex/gpt-nope-zzz (cwd=worktree, FM_HOME=lab, wrapper pid owns lock)
+error: omp model 'openai-codex/gpt-nope-zzz' is not listed by 'omp models --json' although provider 'openai-codex' is; choose a listed <provider>/<id> or omit --model
+validate rc=1
+markers: .omp-turnend-extension-loaded .omp-watch-extension-loaded 
+=== target omp_model_validate openai-codex/gpt-5.6-luna (cwd=worktree, FM_HOME=lab, wrapper pid owns lock)
+validate rc=0
+markers: 
+=== target omp_model_validate openai-codex/gpt-nope-zzz (cwd=worktree, FM_HOME=lab, wrapper pid owns lock)
+error: omp model 'openai-codex/gpt-nope-zzz' is not listed by 'omp models --json' although provider 'openai-codex' is; choose a listed <provider>/<id> or omit --model
+validate rc=1
+markers: 

@@ -1,0 +1,4 @@
+ok - fm-spawn: the omp launch line clears markers, pins posture, and wires the state-resident extension
+ok - fm-spawn: omp model validation is scoped to providers the listing can prove
+ok - fm-spawn: the omp model listing runs with --no-extensions so it cannot overwrite the primary's load markers
+rc=0
