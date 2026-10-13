@@ -742,8 +742,8 @@ trap 'exit 0' TERM INT
 while [ ! -e "$FM_STOP_FILE" ]; do sleep 0.02; done
 SH
   chmod +x "$repo/bin/fm-watch-arm.sh"
-  out=$(FM_HOME="$home" FM_ROOT_OVERRIDE="$repo" FM_ARM_LOG="$log" FM_STOP_FILE="$stop" FM_RELEASE_FILE="$release" FM_WATCH_REARM_RETRY_BASE_MS=20 \
-    EXT="$repo/.omp/extensions/fm-primary-omp-watch.ts" node --input-type=module 2>&1 <<'EOF'
+  # The script sits in a file: Bash 3.2 cannot parse this quoted heredoc inside $( ).
+  cat > "$TMP_ROOT/omp-dead-arm.mjs" <<'EOF'
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 const handlers = new Map(); let tool = null;
@@ -785,7 +785,8 @@ writeFileSync(process.env.FM_STOP_FILE, "stop\n");
 await handlers.get("session_shutdown")?.({}, {});
 process.exit(0);
 EOF
-)
+  out=$(FM_HOME="$home" FM_ROOT_OVERRIDE="$repo" FM_ARM_LOG="$log" FM_STOP_FILE="$stop" FM_RELEASE_FILE="$release" FM_WATCH_REARM_RETRY_BASE_MS=20 \
+    EXT="$repo/.omp/extensions/fm-primary-omp-watch.ts" node "$TMP_ROOT/omp-dead-arm.mjs" 2>&1)
   status=$?
   expect_code 0 "$status" "omp dead-but-unclosed arm child must not hold the slot: $out"
   [ -z "$out" ] || fail "omp dead-child test printed output: $out"
@@ -1043,8 +1044,8 @@ printf '%s\n' "$started"
 sleep 30
 SH
   chmod +x "$repo/bin/fm-watch-arm.sh" "$repo/bin/fm-supervision-host.sh"
-  out=$(FM_HOME="$home" FM_ROOT_OVERRIDE="$repo" FM_ARM_LOG="$log" FM_WATCH_REARM_RETRY_LIMIT=1 FM_WATCH_REARM_RETRY_BASE_MS=5 FM_WATCH_REARM_RETRY_MAX_MS=10 \
-    EXT="$repo/.omp/extensions/fm-primary-omp-watch.ts" node --input-type=module 2>&1 <<'EOF'
+  # The script sits in a file: Bash 3.2 cannot parse this quoted heredoc inside $( ).
+  cat > "$TMP_ROOT/omp-split-close.mjs" <<'EOF'
 import { pathToFileURL } from "node:url";
 import { writeFileSync } from "node:fs";
 writeFileSync(`${process.env.FM_HOME}/state/.lock`, `${process.pid}\n`);
@@ -1067,7 +1068,8 @@ if (!second[0].m.includes("supervision-host: outcome 2 for demo [captain]: fixtu
 await handlers.get("session_shutdown")({}, {});
 process.exit(0);
 EOF
-)
+  out=$(FM_HOME="$home" FM_ROOT_OVERRIDE="$repo" FM_ARM_LOG="$log" FM_WATCH_REARM_RETRY_LIMIT=1 FM_WATCH_REARM_RETRY_BASE_MS=5 FM_WATCH_REARM_RETRY_MAX_MS=10 \
+    EXT="$repo/.omp/extensions/fm-primary-omp-watch.ts" node "$TMP_ROOT/omp-split-close.mjs" 2>&1)
   status=$?
   expect_code 0 "$status" "omp watch extension split host close: $out"
   [ -z "$out" ] || fail "omp watch extension split host close test printed output: $out"
