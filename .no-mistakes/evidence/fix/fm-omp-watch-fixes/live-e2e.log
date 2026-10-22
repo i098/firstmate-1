@@ -1,0 +1,32 @@
+ok - omp omp/18.12.1: both tracked .omp/extensions loaded by auto-discovery with no -e and no trust dialog
+not ok - the session-start digest did not reach model context before the first turn; reply was: SESSION START - No session-start digest is present in the provided context.
+# rpc frame types seen:
+     43 "type":"text"
+     40 "type":"thinking"
+     18 "type":"message_update"
+     17 "type":"extension_ui_request"
+     14 "type":"text_delta"
+      3 "type":"reasoning"
+      3 "type":"output_text"
+      3 "type":"message"
+      2 "type":"message_start"
+      2 "type":"message_end"
+      1 "type":"turn_start"
+      1 "type":"turn_end"
+      1 "type":"thinking_start"
+      1 "type":"thinking_end"
+      1 "type":"text_start"
+      1 "type":"text_end"
+      1 "type":"session_settled"
+      1 "type":"response"
+      1 "type":"ready"
+      1 "type":"prompt_result"
+      1 "type":"extension_error"
+      1 "type":"available_commands_update"
+      1 "type":"agent_start"
+      1 "type":"agent_end"
+      1 "type":"advisor_yielded"
+# guard spy log:
+rc=0 payload={"stop_hook_active":false}
+# last stderr lines:
+EXIT=1
