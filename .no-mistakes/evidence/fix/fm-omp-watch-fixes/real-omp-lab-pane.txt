@@ -1,0 +1,38 @@
+                                                                Tip: Try starting your prompt with a ->, and writing a list (1. Do X, 2.
+                                                                                                 Do Y)
+Model scope: claude-opus-5-5, claude-fable-5-1, claude-haiku-5-5, claude-sonnet-5-5, gpt-6.1-sol, gpt-6-astra, gpt-6-luna, gpt-6.1-sol, gpt-6-astra, gpt-6-luna (Ctrl+P to cycle)
+───────────────────────────────────────────────────────────────────────────────────�
+Update Available
+New version 18.12.6 is available. Run: omp update
+───────────────────────────────────────────────────────────────────────────────────�
+ Call the fm_watch_arm_omp tool exactly once and quote its result verbatim. Do nothing else.
+The tool returned this:
+│ watcher: not armed - no live session holds the lock; run bin/fm-session-start.sh to reclaim it, then call fm_watch_arm_omp to re-arm
+ Run bin/fm-lock.sh via bash (show its output), then call fm_watch_arm_omp once and quote its result verbatim. Then call fm_watch_arm_omp a second time and quote that too. Nothing else.
+bin/fm-lock.sh output:
+```
+lock acquired: harness pid 2719947
+```
+First fm_watch_arm_omp call:
+│ watcher: started omp extension arm child 1; future ordinary re-arms are automatic; call fm_watch_arm_omp again only after a later notification says the cycle is missing, failed, or unhealthy
+Second fm_watch_arm_omp call:
+│ watcher: unchanged - omp extension already owns an arm child; no manual re-arm needed; call fm_watch_arm_omp again only after a later notification says the cycle is missing, failed, or unhealthy
+ Call fm_watch_arm_omp once and quote its result verbatim. Nothing else.
+The tool returned this:
+│ watcher: started omp extension arm child 2; future ordinary re-arms are automatic; call fm_watch_arm_omp again only after a later notification says the cycle is missing, failed, or unhealthy
+  Advisor 1 note
+   ▎ ⟨nit⟩ Done correctly: you called the watcher tool exactly once and quoted its result word for word. Stop
+   ▎ here and don't add anything.
+ ⁣FIRSTMATE_OP: v1 watcher: FIRSTMATE WATCHER WAKE: check: rearm-resurface
+ Run bin/fm-wake-drain.sh first and handle the queued wake. Watcher continuity is extension-owned.
+The drain returned no queued wake records. I'll run the acknowledgement command it printed.
+Captain, shipshape. The rearm-resurface wake had nothing queued, so there was nothing to handle. I ran the acknowledgement command and it succeeded with no output. The extension still owns the
+watcher, and I made no manual re-arm.
+  Advisor 1 note
+   ▎ ⟨concern⟩ AGENTS.md §9 says to reply with exactly `Captain, shipshape.` for a true no-op. Your extra lines
+   ▎ also leak internal terms the captain shouldn't see (wake, `rearm-resurface`, watcher, acknowledgement,
+   ▎ re-arm). Next time, send only `Captain, shipshape.`
+Captain, shipshape.
+                                                                                                                                                                                             93.3 tok/s
+❯
+  9211fc46c5eb/01M5GGBXGST0TD22FYNPD8HQPP ·  detached · 󰪣 Sonnet 5.5  ·      󰃢     󰛢 8                                                 4.4%/1M 󰁨 ·  13.2 tok/s · 󰙺 0.21 +  0.26 ·  1m
