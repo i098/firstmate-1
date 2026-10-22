@@ -1,0 +1,40 @@
+echo $$ > /tmp/fm-lab.RAIGwT/state/.lock; printf 'seed-version\n%s\n' $$ > /tmp/fm-lab.RAIGwT/state/.omp-watch-extension-loaded; printf 'seed-version\n%s\n' $$
+> /tmp/fm-lab.RAIGwT/state/.omp-turnend-extension-loaded; cat /tmp/fm-lab.RAIGwT/state/.omp-watch-extension-loaded | tr '\n' ' '; echo; bin/fm-spawn.sh omp-list
+ed-live /tmp/fm-lab.RAIGwT/proj --harness omp --model openai-codex/gpt-6-astra --scout; echo EXIT=$?; cat /tmp/fm-lab.RAIGwT/state/.omp-watch-extension-loaded /
+tmp/fm-lab.RAIGwT/state/.omp-turnend-extension-loaded | tr '\n' ' '; echo; echo DONE-MARK
+administrator@agents:/sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M5GGHREDWECY157EWC48JFWP$ echo $$ > /tmp/fm-lab.RAIGwT/state/.lock; printf 'seed-version\n%
+s\n' $$ > /tmp/fm-lab.RAIGwT/state/.omp-watch-extension-loaded; printf 'seed-version\n%s\n' $$ > /tmp/fm-lab.RAIGwT/state/.omp-turnend-extension-loaded; cat /tm
+p/fm-lab.RAIGwT/state/.omp-watch-extension-loaded | tr '\n' ' '; echo; bin/fm-spawn.sh omp-listed-live /tmp/fm-lab.RAIGwT/proj --harness omp --model openai-code
+x/gpt-6-astra --scout; echo EXIT=$?; cat /tmp/fm-lab.RAIGwT/state/.omp-watch-extension-loaded /tmp/fm-lab.RAIGwT/state/.omp-turnend-extension-loaded | tr '\n' '
+ '; echo; echo DONE-MARK
+seed-version 3409323
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RAIGwT
+error: task omp-listed-live has no brief at inaccessible data path /tmp/fm-lab.RAIGwT/data/omp-listed-live/brief.md
+EXIT=1
+seed-version 3409323 seed-version 3409323
+DONE-MARK
+administrator@agents:/sdb-disk/tmp/fm-omp-watch-fixes/nm-worktrees/01M5GGHREDWECY157EWC48JFWP$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

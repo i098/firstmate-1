@@ -1,0 +1,17 @@
+ancestor (lock owner) pid: 2724507
+--- markers before:
+watch: seed-version 2724507 
+turnend: seed-version 2724507 
+=== run 1: omp models --json (WITHOUT --no-extensions, old behavior)
+catalog size: 149
+--- markers after run 1:
+watch: sha256:cffc47d1b37afff5a827f770fe1c4d025c564bb0848864f7ac023bd15f1b8b36 2724592 
+turnend: sha256:7c2d30b6906586f4169e716429e360de61675de3309de19b9179a836325f49bb 2724592 
+--- markers reseeded:
+watch: seed-version 2724507 
+turnend: seed-version 2724507 
+=== run 2: omp models --json --no-extensions (the change)
+catalog size: 149
+--- markers after run 2:
+watch: seed-version 2724507 
+turnend: seed-version 2724507 

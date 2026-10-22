@@ -1,0 +1,11 @@
+ancestor (lock owner) pid: 3008176 ; omp: omp/18.12.1
+--- markers before:
+watch: seed-version 3008176 
+turnend: seed-version 3008176 
+=== FM_HOME=/tmp/fm-lab.RAIGwT bin/fm-spawn.sh omp-noext-live /tmp/fm-lab.RAIGwT/proj --harness omp --model openai-codex/gpt-nope --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RAIGwT
+error: omp model 'openai-codex/gpt-nope' is not listed by 'omp models --json' although provider 'openai-codex' is; choose a listed <provider>/<id> or omit --model
+exit status: 1
+--- markers after:
+watch: seed-version 3008176 
+turnend: seed-version 3008176 

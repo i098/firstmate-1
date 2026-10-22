@@ -1,0 +1,22 @@
+ancestor (lock owner) pid: 3285741
+--- markers before:
+watch: seed-version 3285741 
+turnend: seed-version 3285741 
+=== BASE-COMMIT fm-spawn.sh (bd866530, listing without --no-extensions), ROOT=/tmp/fm-lab.RAIGwT with the tracked .omp copied in
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RAIGwT
+error: omp model 'openai-codex/gpt-nope' is not listed by 'omp models --json' although provider 'openai-codex' is; choose a listed <provider>/<id> or omit --model
+exit status: 1
+--- markers after:
+watch: sha256:cffc47d1b37afff5a827f770fe1c4d025c564bb0848864f7ac023bd15f1b8b36 3287844 
+turnend: sha256:7c2d30b6906586f4169e716429e360de61675de3309de19b9179a836325f49bb 3287844 
+
+=== TARGET-COMMIT bin/fm-spawn.sh (797735c5, --no-extensions), same lab, same cwd
+--- markers reseeded:
+watch: seed-version 3285741 
+turnend: seed-version 3285741 
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RAIGwT
+error: omp model 'openai-codex/gpt-nope' is not listed by 'omp models --json' although provider 'openai-codex' is; choose a listed <provider>/<id> or omit --model
+exit status: 1
+--- markers after:
+watch: seed-version 3285741 
+turnend: seed-version 3285741 
