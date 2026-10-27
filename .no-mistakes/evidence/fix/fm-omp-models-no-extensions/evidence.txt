@@ -1,0 +1,3 @@
+fixed: ok - fm-spawn: the omp model listing runs with --no-extensions...
+flag removed (mutation): not ok - the model listing discovered the home's extensions
+real omp: 'omp models --help' lists --no-extensions; 'omp models --json --no-extensions' returns catalog JSON

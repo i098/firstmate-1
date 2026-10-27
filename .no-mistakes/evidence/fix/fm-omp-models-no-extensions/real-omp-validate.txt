@@ -1,0 +1,5 @@
+error: omp model 'anthropic/claude-nope' is not listed by 'omp models --json' although provider 'anthropic' is; choose a listed <provider>/<id> or omit --model
+model=anthropic/claude-nope rc=1
+model=anthropic/claude-3-5-sonnet-20240620 rc=0
+notice: omp provider 'madeup-prov' is not in 'omp models --json' (extension-registered providers are never listed); launching 'madeup-prov/x' unvalidated
+model=madeup-prov/x rc=0
