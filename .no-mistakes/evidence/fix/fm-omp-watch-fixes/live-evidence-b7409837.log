@@ -1,0 +1,57 @@
+### confirm3
+# arm.log:
+arm=3928403
+arm=3933112
+confirm generation=gen-1 watcher=3933112 rc=3
+ok [confirm3] - exit-3 confirmation delivered the wake plain (no FAILED / rejected appendix), real omp turn
+### confirm1
+# arm.log:
+arm=4172844
+arm=4178128
+confirm generation=gen-1 watcher=4178128 rc=1
+confirm generation=gen-1 watcher=4178128 rc=1
+ok [confirm1] - exit-1 refusal still reports 'handling delivery confirmation was rejected (status=1 ...' in the wake
+### newer
+# arm.log:
+arm=252550
+arm=252876
+arm=268209
+confirm generation=stale watcher=253096 rc=1
+confirm generation=stale watcher=253096 rc=1
+ok [newer] - failed confirmation for stale successor (own token, dead pid) did not retire newer healthy arm 268209
+### dead
+# arm.log:
+arm=532031
+arm=545691
+arm=553113
+ok [dead] - repair and scheduled retry both treated a dead-but-unclosed arm child as an empty slot (arms=3)
+### host-away
+# arm.log:
+host=788836 args=park --restart primary=omp predecessor=none
+host=794276 args=park --restart primary=omp predecessor=788836
+confirmed generation=gen-2 watcher=794276
+ok [host-away] - opted-in away home ran the supervision host, relayed every host line, away-note=yes
+### host-quiet
+# arm.log:
+host=1017406 args=park --restart primary=omp predecessor=none
+host=1023277 args=park --restart primary=omp predecessor=1017406
+confirmed generation=gen-2 watcher=1023277
+ok [host-quiet] - opted-in quiet home ran the supervision host, relayed every host line, away-note=no
+### optout-absent
+# arm.log:
+plain-arm=1260189
+ok [optout-absent] - home with supervision-host absent spawned only the plain arm
+### optout-off
+# arm.log:
+plain-arm=1503306
+ok [optout-off] - home with supervision-host off spawned only the plain arm
+### split
+# hosts=3
+ok [split] - split host close delivered as one follow-up carrying signal and outcome lines
+### replay
+# consumed-before-quit frames: 0
+# persisted handoff:
+{"version":2,"pending":[{"version":1,"token":"1859790-1793065048501-1","message":"supervision-host: outcome 1 for demo [captain]: fixture boundary","predecessorArmPid":"2121481"}]}
+
+ok [replay] - host-only boundary persisted at omp shutdown, replayed in the successor omp session, handoff cleared
+ALLDONE
